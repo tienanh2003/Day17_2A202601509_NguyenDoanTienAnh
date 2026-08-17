@@ -3,34 +3,34 @@
 - Implementation: `student`
 - Kind: `golden`
 - Cases: **20**
-- Passed: **18/20**
-- Evidence hit rate: **90.0%**
-- Average retrieval latency: **2058.7 ms**
+- Passed: **20/20**
+- Evidence hit rate: **100.0%**
+- Average retrieval latency: **914.8 ms**
 - Average token reduction vs full source context: **8.7%**
-- Golden bonus: **0/10** (100% required)
+- Golden bonus: **10/10** (100% required)
 
 | Case | Layer | Pass | Latency ms | Retrieved tokens | Token reduction | Missing / Error |
 | --- | --- | --- | ---: | ---: | ---: | --- |
-| G01 | short_term | PASS | 0.2 | 227 | 0.0% |  |
-| G02 | short_term | PASS | 0.0 | 133 | 0.0% |  |
-| G08 | long_term | PASS | 2431.8 | 748 | 0.0% |  |
-| G09 | long_term | PASS | 5006.6 | 1425 | 0.0% |  |
-| G12 | semantic | PASS | 328.8 | 365 | 20.5% |  |
-| G14 | semantic | PASS | 694.1 | 217 | 43.9% |  |
-| G15 | semantic | PASS | 293.5 | 217 | 52.7% |  |
-| G19 | mixed | PASS | 4972.7 | 581 | 0.0% |  |
-| G03 | long_term | PASS | 2921.2 | 1420 | 0.0% |  |
-| G04 | long_term | FAIL | 1845.0 | 1416 | 0.0% | missing=LAB-REPORT-1600 |
-| G05 | long_term | PASS | 3056.7 | 1407 | 0.0% |  |
-| G10 | episodic | PASS | 291.9 | 555 | 0.0% |  |
-| G11 | episodic | PASS | 690.7 | 558 | 0.0% |  |
-| G13 | semantic | PASS | 724.3 | 363 | 35.8% |  |
-| G16 | mixed | PASS | 2830.6 | 581 | 0.0% |  |
-| G18 | mixed | FAIL | 2226.2 | 489 | 13.5% | missing=ClientSession |
-| G20 | mixed | PASS | 5340.5 | 831 | 0.0% |  |
-| G06 | long_term | PASS | 3005.7 | 1416 | 0.0% |  |
-| G07 | long_term | PASS | 1827.5 | 1419 | 0.0% |  |
-| G17 | mixed | PASS | 2686.2 | 581 | 8.1% |  |
+| G01 | short_term | PASS | 0.3 | 227 | 0.0% |  |
+| G02 | short_term | PASS | 0.1 | 133 | 0.0% |  |
+| G08 | long_term | PASS | 1723.3 | 786 | 0.0% |  |
+| G09 | long_term | PASS | 1289.2 | 1385 | 0.0% |  |
+| G12 | semantic | PASS | 244.7 | 365 | 20.5% |  |
+| G14 | semantic | PASS | 245.8 | 217 | 43.9% |  |
+| G15 | semantic | PASS | 242.5 | 217 | 52.7% |  |
+| G19 | mixed | PASS | 1496.1 | 581 | 0.0% |  |
+| G03 | long_term | PASS | 1383.7 | 1362 | 0.0% |  |
+| G04 | long_term | PASS | 1312.8 | 1373 | 0.0% |  |
+| G05 | long_term | PASS | 1316.6 | 1375 | 0.0% |  |
+| G10 | episodic | PASS | 252.2 | 407 | 0.0% |  |
+| G11 | episodic | PASS | 239.8 | 407 | 0.0% |  |
+| G13 | semantic | PASS | 235.7 | 363 | 35.8% |  |
+| G16 | mixed | PASS | 1672.8 | 581 | 0.0% |  |
+| G18 | mixed | PASS | 491.3 | 489 | 13.5% |  |
+| G20 | mixed | PASS | 1911.6 | 831 | 0.0% |  |
+| G06 | long_term | PASS | 1394.9 | 1388 | 0.0% |  |
+| G07 | long_term | PASS | 1296.0 | 1371 | 0.0% |  |
+| G17 | mixed | PASS | 1546.9 | 581 | 8.1% |  |
 
 ## Evidence excerpts
 
@@ -52,19 +52,19 @@
 
 ### G12 - semantic
 
-`EPISODE: {"id":"kb-payment-retry","entity":"Payment API Retry Policy","summary":"For POST /payments, every retryable request MUST send the same Idempotency-Key. Retry only HTTP 429 or transient 5xx errors, use exponential-backoff, and stop after max-3-retries. Marker: PAYMENT-RULE-3.","source":"internal-api-guideline-v3","updated_at":"2026-08-10T00:00:00Z"} metadata= EPISODE: For POST /payments, every retryable request MUST send the same Idempotency-Key. Retry only HTTP 429 or transient 5xx errors, use exponential-backoff, and stop after max-3-retries. Marker: PAYMENT-RULE-3. metadata= EPISODE: Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped m`
+`EPISODE: {"id":"kb-payment-retry","entity":"Payment API Retry Policy","summary":"For POST /payments, every retryable request MUST send the same Idempotency-Key. Retry only HTTP 429 or transient 5xx errors, use exponential-backoff, and stop after max-3-retries. Marker: PAYMENT-RULE-3.","source":"internal-api-guideline-v3","updated_at":"2026-08-10T00:00:00Z"} metadata= EPISODE: For POST /payments, every retryable request MUST send the same Idempotency-Key. Retry only HTTP 429 or transient 5xx errors, use exponential-backoff, and stop after max-3-retries. Marker: PAYMENT-RULE-3. metadata= EPISODE: {"id":"kb-memory-privacy","entity":"Agent Memory Privacy Rule","summary":"Do not persist personal `
 
 ### G14 - semantic
 
-`EPISODE: Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL. metadata= EPISODE: {"id":"kb-memory-privacy","entity":"Agent Memory Privacy Rule","summary":"Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL.","source":"memory-governance-policy","updated_at":"2026-08-12T00:00:00Z"} metadata= EPISODE: {"id":"kb-context-budget","entity":"Memory Context Budget","summary":"Reserve bounded context for memory. This lab uses short-term 10 percent, long-term 4 percent, episodi`
+`EPISODE: {"id":"kb-memory-privacy","entity":"Agent Memory Privacy Rule","summary":"Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL.","source":"memory-governance-policy","updated_at":"2026-08-12T00:00:00Z"} metadata= EPISODE: Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL. metadata= EPISODE: {"id":"kb-context-budget","entity":"Memory Context Budget","summary":"Reserve bounded context for memory. This lab uses short-term 10 percent, long-term 4 percent, episodi`
 
 ### G15 - semantic
 
-`EPISODE: Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL. metadata= EPISODE: {"id":"kb-memory-privacy","entity":"Agent Memory Privacy Rule","summary":"Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL.","source":"memory-governance-policy","updated_at":"2026-08-12T00:00:00Z"} metadata= EPISODE: {"id":"kb-context-budget","entity":"Memory Context Budget","summary":"Reserve bounded context for memory. This lab uses short-term 10 percent, long-term 4 percent, episodi`
+`EPISODE: {"id":"kb-memory-privacy","entity":"Agent Memory Privacy Rule","summary":"Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL.","source":"memory-governance-policy","updated_at":"2026-08-12T00:00:00Z"} metadata= EPISODE: Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and be verified across every store. Marker: DELETE-VERIFY-ALL. metadata= EPISODE: {"id":"kb-context-budget","entity":"Memory Context Budget","summary":"Reserve bounded context for memory. This lab uses short-term 10 percent, long-term 4 percent, episodi`
 
 ### G19 - mixed
 
-`<LONG_TERM> <USER_SUMMARY> Lan's project is LOTUS-88. Lan prioritizes Java and Spring Boot for backend examples and does not use Python in the backend. </USER_SUMMARY>  <EPISODES> Episodes are source message or document excerpts shown in selection order.   - Created At: 2026-08-17 05:45:41     Source: message     Content: [user] {   "user_id": "lan-lab17",   "first_name": "Lan",   "last_name": "Tran",   "user_alias": "Evaluation User" }: Chao ban, minh la Lan day. Minh dang len ke hoach kien truc cho san pham rieng cua minh va sap toi phai giai trinh voi doi tac ve lua chon cong nghe nen minh muon chac chan minh dang nho dung. Ban nhac lai gium minh xem: rieng cho san pham cua minh, minh da `
+`<LONG_TERM> <USER_SUMMARY> Lan's project is LOTUS-88. Lan prioritizes Java and Spring Boot for backend examples and does not use Python in the backend. </USER_SUMMARY>  <EPISODES> Episodes are source message or document excerpts shown in selection order.   - Created At: 2026-08-01 11:00:00     Source: message     Content: [user] {   "user_id": "lan-lab17",   "first_name": "Lan",   "last_name": "Tran",   "user_alias": "Lan Tran" }: Toi la Lan. Du an cua toi la LOTUS-88. Toi uu tien Java va Spring Boot, va khong dung Python trong vi du backend.   - Created At: 2026-08-01 11:00:20     Source: message     Content: Lab Assistant (assistant): Da hieu: LOTUS-88, Java + Spring Boot cho backend examp`
 
 ### G03 - long_term
 
@@ -80,15 +80,15 @@
 
 ### G10 - episodic
 
-`EPISODE: Cap nhat moi: voi du an cong ty BLUEBIRD-42, backend bat buoc dung TypeScript voi NestJS; khong dung Python cho backend du an nay. Preference Python van dung cho demo ca nhan ORCHI EPISODE: Minh dang lam kiem ke lai mo hinh cac du an backend de bao cao, ma minh rat so cai vu bi gan nham du an cua nguoi khac vao ho so cua minh, chuyen do tung xay ra roi nen lan nay min EPISODE: Minh dang ngoi mot minh viet cho xong cai ham retry cho POST payment de toi nay demo, va minh muon no vua dung dung ngon ngu ma minh thich khi lam viec ca nhan, vua bam sat dung po EPISODE: Minh dang setup lai moi truong dev cho mot buoi ngoi code mot minh cuoi tuan nay, kieu khong co ai chung nhom, chi lam pr`
+`EPISODE: Ten du an ca nhan cua toi la ORCHID-27. Toi thich Python va khong thich Java. Khi giai thich code, hay dung vi du ngan. EPISODE: Da hieu: demo ca nhan ORCHID-27, uu tien Python, tranh Java, vi du ngan. EPISODE: Toi dang hoc async/await va hay nham coroutine voi Task. Neu sau nay gap chu de nay, hay giai thich bang timeline. EPISODE: Toi se uu tien timeline khi giai thich coroutine va Task. EPISODE: TODO: hoan thanh benchmark report truoc thu Sau luc 16:00. Day la open loop LAB-REPORT-1600. EPISODE: Hom nay toi debug async HTTP. Toi da thu tang timeout len 60s nhung van fail. EPISODE: Hay kiem tra connection pool, lifecycle cua client va concurrency. EPISODE: Cach hieu qua la reuse a`
 
 ### G11 - episodic
 
-`EPISODE: Cap nhat moi: voi du an cong ty BLUEBIRD-42, backend bat buoc dung TypeScript voi NestJS; khong dung Python cho backend du an nay. Preference Python van dung cho demo ca nhan ORCHI EPISODE: Da tach scope: BLUEBIRD-42 dung TypeScript/NestJS; ORCHID-27 van uu tien Python. EPISODE: Minh dang lam kiem ke lai mo hinh cac du an backend de bao cao, ma minh rat so cai vu bi gan nham du an cua nguoi khac vao ho so cua minh, chuyen do tung xay ra roi nen lan nay min EPISODE: Minh dang ngoi mot minh viet cho xong cai ham retry cho POST payment de toi nay demo, va minh muon no vua dung dung ngon ngu ma minh thich khi lam viec ca nhan, vua bam sat dung po EPISODE: Minh dang setup lai moi truong `
+`EPISODE: Ten du an ca nhan cua toi la ORCHID-27. Toi thich Python va khong thich Java. Khi giai thich code, hay dung vi du ngan. EPISODE: Da hieu: demo ca nhan ORCHID-27, uu tien Python, tranh Java, vi du ngan. EPISODE: Toi dang hoc async/await va hay nham coroutine voi Task. Neu sau nay gap chu de nay, hay giai thich bang timeline. EPISODE: Toi se uu tien timeline khi giai thich coroutine va Task. EPISODE: TODO: hoan thanh benchmark report truoc thu Sau luc 16:00. Day la open loop LAB-REPORT-1600. EPISODE: Hom nay toi debug async HTTP. Toi da thu tang timeout len 60s nhung van fail. EPISODE: Hay kiem tra connection pool, lifecycle cua client va concurrency. EPISODE: Cach hieu qua la reuse a`
 
 ### G13 - semantic
 
-`EPISODE: {"id":"kb-async-http","entity":"Async HTTP Incident Playbook","summary":"When async HTTP calls time out, inspect connection pooling, downstream saturation and concurrency before increasing timeout. Reuse a long-lived client session where possible. Marker: CONN-POOL-FIRST.","source":"incident-playbook-2026","updated_at":"2026-08-11T00:00:00Z"} metadata= EPISODE: When async HTTP calls time out, inspect connection pooling, downstream saturation and concurrency before increasing timeout. Reuse a long-lived client session where possible. Marker: CONN-POOL-FIRST. metadata= EPISODE: Do not persist personal data without explicit opt-in. A deletion request must remove user-scoped memory and `
+`EPISODE: {"id":"kb-async-http","entity":"Async HTTP Incident Playbook","summary":"When async HTTP calls time out, inspect connection pooling, downstream saturation and concurrency before increasing timeout. Reuse a long-lived client session where possible. Marker: CONN-POOL-FIRST.","source":"incident-playbook-2026","updated_at":"2026-08-11T00:00:00Z"} metadata= EPISODE: When async HTTP calls time out, inspect connection pooling, downstream saturation and concurrency before increasing timeout. Reuse a long-lived client session where possible. Marker: CONN-POOL-FIRST. metadata= EPISODE: {"id":"kb-memory-privacy","entity":"Agent Memory Privacy Rule","summary":"Do not persist personal data witho`
 
 ### G16 - mixed
 
@@ -96,7 +96,7 @@
 
 ### G18 - mixed
 
-`<EPISODIC> EPISODE: Cap nhat moi: voi du an cong ty BLUEBIRD-42, backend bat buoc dung TypeScript voi NestJS; khong dung Python cho backend du an nay. Preference Python van dung cho demo ca nhan ORCHI EPISODE: Da tach scope: BLUEBIRD-42 dung TypeScript/NestJS; ORCHID-27 van uu tien Python. EPISODE: Minh dang lam kiem ke lai mo hinh cac du an backend de bao cao, ma minh rat so cai vu bi gan nham du an cua nguoi khac vao ho so cua minh, chuyen do tung xay ra roi nen lan nay min EPISODE: Minh dang setup lai moi truong dev cho mot buoi ngoi code mot minh cuoi tuan nay, kieu khong co ai chung nhom, chi lam project rieng cua minh cho vui thoi. Truoc khi minh chon temp EPISODE: Toi nay minh muon vi`
+`<EPISODIC> EPISODE: Ten du an ca nhan cua toi la ORCHID-27. Toi thich Python va khong thich Java. Khi giai thich code, hay dung vi du ngan. EPISODE: Da hieu: demo ca nhan ORCHID-27, uu tien Python, tranh Java, vi du ngan. EPISODE: Toi dang hoc async/await va hay nham coroutine voi Task. Neu sau nay gap chu de nay, hay giai thich bang timeline. EPISODE: Toi se uu tien timeline khi giai thich coroutine va Task. EPISODE: TODO: hoan thanh benchmark report truoc thu Sau luc 16:00. Day la open loop LAB-REPORT-1600. EPISODE: Sang mai minh phai hop review tien do voi mentor nen toi nay minh muon don dep lai het may thu con dang do. Minh biet minh con vai viec chua chot xong nhung dau oc dang roi qua`
 
 ### G20 - mixed
 
