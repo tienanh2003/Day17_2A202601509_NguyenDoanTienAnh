@@ -36,13 +36,24 @@ class ReferenceMemory:
         return join_nonempty([context_block, fact_text], sep="\n\n")
 
     def retrieve_episodic(self, user_id: str, query: str) -> str:
+        # results = self.client.graph.search(
+        #     user_id=user_id,
+        #     query=cap_query(query),
+        #     scope="episodes",
+        #     limit=15,
+        # )
+        # return render_graph_search(results, episode_char_cap=180)
         results = self.client.graph.search(
             user_id=user_id,
             query=cap_query(query),
             scope="episodes",
             limit=15,
         )
-        return render_graph_search(results, episode_char_cap=180)
+
+        return render_graph_search(
+            results,
+            episode_char_cap=180,
+        )
 
     def retrieve_semantic(self, graph_id: str, query: str) -> str:
         # scope="episodes" returns raw document content (keeps literal markers
