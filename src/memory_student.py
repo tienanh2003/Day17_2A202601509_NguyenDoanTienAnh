@@ -39,13 +39,33 @@ class StudentMemory:
         from .utils import join_nonempty
         return join_nonempty([context_block, fact_text], sep="\n\n")
 
+    # def retrieve_episodic(self, user_id: str, query: str) -> str:
+    #     # Search for episodic memories (past sessions/experiences)
+    #     # Tip: episode_char_cap=180 keeps more distinct episodes within budget
+    #     try:
+    #         results = self.client.graph.search(
+    #             user_id=user_id,
+    #             query=cap_query(query),
+    #             scope="episodes",
+    #             limit=15,
+    #         )
+    #     except Exception:
+    #         return ""
+
+    #     return render_graph_search(results, episode_char_cap=180)
     def retrieve_episodic(self, user_id: str, query: str) -> str:
-        # Search for episodic memories (past sessions/experiences)
-        # Tip: episode_char_cap=180 keeps more distinct episodes within budget
+        # Golden queries can be longer than Zep's 400-char search limit.
+        # Preserve both the beginning and the tail because the tail may contain
+        # an important episodic sub-question.
+        if len(query) > 400:
+            search_query = f"{query[:190]} ... {query[-190:]}"
+        else:
+            search_query = query
+
         try:
             results = self.client.graph.search(
                 user_id=user_id,
-                query=cap_query(query),
+                query=cap_query(search_query),
                 scope="episodes",
                 limit=15,
             )
